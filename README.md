@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-04 18:24:48
+ * @LastEditTime: 2024-10-04 18:25:48
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -12,6 +12,7 @@ Comfyui custom node for [FunAudioLLM](https://funaudiollm.github.io/) include [C
 ## Features
 
 ### CosyVoice
+  - Support CosyVoice-300M-25Hz in zero-shot and cross-lingual
   - <details>
       <summary>Save and load speaker model in zero-shot and cross-lingual</summary>
       <img src="./assets/SaveSpeakerModel.png" alt="zh-CN" /> <br>

@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 14:57:50
+LastEditTime: 2024-10-04 16:59:19
 Description: file content
 '''
 import os
@@ -106,7 +106,7 @@ class CosyVoiceLoadSpeakerModelNode:
         }
     
     CATEGORY = CATEGORY_NAME
-    
+    RETURN_TYPES = ("SPK_MODEL",)
     FUNCTION="generate"
 
     def generate(self, speaker_name, model_dir):
@@ -126,7 +126,7 @@ class CosyVoiceLoadSpeakerModelFromUrlNode:
         }
     
     CATEGORY = CATEGORY_NAME
-    
+    RETURN_TYPES = ("SPK_MODEL",)
     FUNCTION="generate"
 
     def generate(self, model_url):
@@ -146,7 +146,7 @@ class CosyVoiceSaveSpeakerModelNode:
         }
     
     CATEGORY = CATEGORY_NAME
-    
+    RETURN_TYPES = ()
     FUNCTION="generate"
 
     def generate(self, spk_model, speaker_name, model_dir):

@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-04 20:48:17
+ * @LastEditTime: 2024-10-04 21:14:03
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -12,7 +12,8 @@ Comfyui custom node for [FunAudioLLM](https://funaudiollm.github.io/) include [C
 ## Features
 
 ### CosyVoice
-  - Support SFT,Zero-shot,Cross-lingual
+  - CosyVoice Version: 2024-10-04
+  - Support SFT,Zero-shot,Cross-lingual,Instruct
   - Support CosyVoice-300M-25Hz in zero-shot and cross-lingual
   - Support SFT's 25Hz(unoffical)
   - <details>

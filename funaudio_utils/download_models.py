@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 13:54:01
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 18:42:14
+LastEditTime: 2024-10-04 21:10:55
 Description: file content
 '''
 import modelscope
@@ -30,6 +30,13 @@ def download_cosyvoice_300m_sft(is_25hz=False):
     if is_25hz:
         model_name = "CosyVoice-300M-SFT-25Hz"
         model_id = "MachineS/CosyVoice-300M-SFT-25Hz"
+    model_dir = os.path.join(base_cosyvoice_model_path, model_name)
+    snapshot_download(model_id=model_id, local_dir=model_dir)
+    return model_name, model_dir
+
+def download_cosyvoice_300m_instruct():
+    model_name = "CosyVoice-300M-Instruct"
+    model_id = "iic/CosyVoice-300M-Instruct"
     model_dir = os.path.join(base_cosyvoice_model_path, model_name)
     snapshot_download(model_id=model_id, local_dir=model_dir)
     return model_name, model_dir

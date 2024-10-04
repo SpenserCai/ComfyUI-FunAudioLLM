@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 20:13:31
+LastEditTime: 2024-10-04 21:11:53
 Description: file content
 '''
 import os
@@ -12,7 +12,7 @@ import random
 import numpy as np
 import torch
 from funaudio_utils.pre import FunAudioLLMTool
-from funaudio_utils.download_models import download_cosyvoice_300m, get_speaker_default_path, download_cosyvoice_300m_sft
+from funaudio_utils.download_models import download_cosyvoice_300m, get_speaker_default_path, download_cosyvoice_300m_sft,download_cosyvoice_300m_instruct
 from funaudio_utils.cosyvoice_plus import CosyVoicePlus
 from cosyvoice.utils.common import set_all_random_seed
 
@@ -156,6 +156,38 @@ class CosyVoiceCrossLingualNode:
         prompt_speech_16k = fAudioTool.postprocess(speech)
         set_all_random_seed(seed)
         output = cosyvoice.inference_cross_lingual(tts_text, prompt_speech_16k, False, speed)
+        return return_audio(output,t0,None)
+
+class CosyVoiceInstructNode:
+    sft_spk_list = ['中文女', '中文男', '日语男', '粤语女', '英文女', '英文男', '韩语女']
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required":{
+                "tts_text":("STRING",),
+                "speaker_name":(s.sft_spk_list,{
+                    "default":"中文女"
+                }),
+                "instruct_text":("STRING",),
+                "speed":("FLOAT",{
+                    "default": 1.0
+                }),
+                "seed":("INT",{
+                    "default": 42
+                }),
+            }
+        }
+    
+    CATEGORY = CATEGORY_NAME
+    RETURN_TYPES = ("AUDIO",)
+    FUNCTION="generate"
+
+    def generate(self, tts_text, speaker_name, instruct_text, speed, seed, use_25hz):
+        t0 = ttime()
+        _, model_dir = download_cosyvoice_300m_instruct()
+        cosyvoice = CosyVoicePlus(model_dir)
+        set_all_random_seed(seed)
+        output = cosyvoice.inference_instruct(tts_text, speaker_name, instruct_text, False, speed)
         return return_audio(output,t0,None)
 
 class CosyVoiceLoadSpeakerModelNode:

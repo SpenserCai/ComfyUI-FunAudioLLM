@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:14:22
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 20:14:52
+LastEditTime: 2024-10-04 21:12:47
 Description: file content
 '''
 from .nodes.cosyvoice_nodes import *
@@ -21,6 +21,10 @@ NODE_CONFIG = {
     "CosyVoiceCrossLingualNode": {
         "class": CosyVoiceCrossLingualNode,
         "name": "CosyVoice 跨语言克隆"
+    },
+    "CosyVoiceInstructNode": {
+        "class": CosyVoiceInstructNode,
+        "name": "CosyVoice 自然语言控制"
     },
     "CosyVoiceSaveSpeakerModelNode": {
         "class": CosyVoiceSaveSpeakerModelNode,

@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:14:22
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 21:12:47
+LastEditTime: 2024-10-04 22:29:33
 Description: file content
 '''
 from .nodes.cosyvoice_nodes import *
@@ -38,6 +38,10 @@ NODE_CONFIG = {
         "class": CosyVoiceLoadSpeakerModelFromUrlNode,
         "name": "CosyVoice 从URL加载说话人模型"
     },
+    "SenseVoiceNode": {
+        "class": SenseVoiceNode,
+        "name": "SenseVoice 语音识别"
+    }
 }
 
 def generate_node_mappings(node_config):

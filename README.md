@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-04 21:14:03
+ * @LastEditTime: 2024-10-04 22:28:03
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -21,6 +21,10 @@ Comfyui custom node for [FunAudioLLM](https://funaudiollm.github.io/) include [C
       <img src="./assets/SaveSpeakerModel.png" alt="zh-CN" /> <br>
       <img src="./assets/LoadSpeakerModel.png" alt="zh-CN" />
     </details>
+
+### SenseVoice
+  - SenseVoice Version: 2024-10-04
+  - Support SenseVoice-Small
 
 ## How use
 ```bash
@@ -40,4 +44,5 @@ If your network is unstable, you can pre-download the model from the following s
 - [CosyVoice-300M-SFT](https://modelscope.cn/models/iic/CosyVoice-300M-SFT) -> `ComfyUI/models/CosyVoice/CosyVoice-300M-SFT`
 - [CosyVoice-300M-SFT-25Hz](https://modelscope.cn/models/MachineS/CosyVoice-300M-SFT-25Hz) -> `ComfyUI/models/CosyVoice/CosyVoice-300M-SFT-25Hz`
 - [CosyVoice-300M-Instruct](https://modelscope.cn/models/iic/CosyVoice-300M-Instruct) -> `ComfyUI/models/CosyVoice/CosyVoice-300M-Instruct`
+- [SenseVoiceSmall](https://modelscope.cn/models/iic/SenseVoiceSmall) -> `ComfyUI/models/SenseVoice/SenseVoiceSmall`
      

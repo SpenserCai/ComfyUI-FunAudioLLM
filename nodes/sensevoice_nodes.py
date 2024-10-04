@@ -1,4 +1,6 @@
 import folder_paths
+import torch
+import torchaudio
 import os
 import numpy as np
 from funasr import AutoModel
@@ -33,8 +35,14 @@ class SenseVoiceNode:
         sensevoice_code_path = os.path.join(folder_paths.base_path,"custom_nodes/ComfyUI-FunAudioLLM/sensevoice/model.py")
         speech = audio["waveform"]
         source_sr = audio["sample_rate"]
-        speech = fAudioTool.audio_resample(speech, source_sr)
-        speech = fAudioTool.postprocess(speech)
+        speech = speech.astype(np.float32) / np.iinfo(np.int16).max
+        if len(speech.shape) > 1:
+            input_wav = speech.mean(-1)
+        if source_sr != 16000:
+            print(f"audio_fs: {source_sr}")
+            resampler = torchaudio.transforms.Resample(source_sr, 16000)
+            speech_t = torch.from_numpy(input_wav).to(torch.float32)
+            speech = resampler(speech_t[None, :])[0, :].numpy()
         _, model_dir = download_sensevoice_small()
         model_arg = {
                 "input":speech,

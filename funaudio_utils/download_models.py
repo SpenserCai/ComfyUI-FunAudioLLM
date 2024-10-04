@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 13:54:01
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 14:04:58
+LastEditTime: 2024-10-04 15:56:05
 Description: file content
 '''
 import modelscope
@@ -23,3 +23,6 @@ def download_cosyvoice_300m(is_25hz=False):
     model_dir = os.path.join(base_cosyvoice_model_path, model_name)
     snapshot_download(model_id=model_id, local_dir=model_dir)
     return model_name, model_dir
+
+def get_speaker_default_path():
+    return os.path.join(base_cosyvoice_model_path, "Speaker")

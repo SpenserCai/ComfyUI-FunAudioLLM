@@ -4,8 +4,20 @@ from .nodes.sensevoice_nodes import *
 NODE_CONFIG = {
     "CosyVoiceZeroShotNode": {
         "class": CosyVoiceZeroShotNode,
-        "name": "CosyVoice 3s极速克隆/跨语种克隆"
-    }
+        "name": "CosyVoice 3s极速克隆"
+    },
+    "CosyVoiceSaveSpeakerModelNode": {
+        "class": CosyVoiceSaveSpeakerModelNode,
+        "name": "CosyVoice 保存说话人模型"
+    },
+    "CosyVoiceLoadSpeakerModelNode": {
+        "class": CosyVoiceLoadSpeakerModelNode,
+        "name": "CosyVoice 加载说话人模型"
+    },
+    "CosyVoiceLoadSpeakerModelFromUrlNode": {
+        "class": CosyVoiceLoadSpeakerModelFromUrlNode,
+        "name": "CosyVoice 从URL加载说话人模型"
+    },
 }
 
 def generate_node_mappings(node_config):

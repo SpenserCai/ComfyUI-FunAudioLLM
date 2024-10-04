@@ -30,7 +30,7 @@ class SenseVoiceNode:
     FUNCTION="generate"
 
     def generate(self,audio, less_than_30s):
-        sensevoice_code_path = os.path.join(folder_paths.folder_names_and_paths["custom_nodes"],"ComfyUI-FunAudioLLM/sensevoice/model.py")
+        sensevoice_code_path = os.path.join(folder_paths.base_path,"custom_nodes/ComfyUI-FunAudioLLM/sensevoice/model.py")
         speech = audio["waveform"]
         source_sr = audio["sample_rate"]
         speech = fAudioTool.audio_resample(speech, source_sr)

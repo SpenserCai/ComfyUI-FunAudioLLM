@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 15:17:07
+LastEditTime: 2024-10-04 15:25:43
 Description: file content
 '''
 '''
@@ -70,7 +70,7 @@ class CosyVoiceZeroShotNode:
                 }),
             },
             "optional":{
-                "prompt_text":("TEXT",),
+                "prompt_text":("STRING",),
             }
         }
     
@@ -89,12 +89,12 @@ class CosyVoiceZeroShotNode:
         prompt_speech_16k = fAudioTool.postprocess(speech)
         if inference_mode == "3s极速克隆":
             print('get zero_shot inference request')
-            print(self.model_dir)
+            print(model_dir)
             set_all_random_seed(seed)
             output = cosyvoice.inference_zero_shot(tts_text, prompt_text, prompt_speech_16k,False,speed)
         elif inference_mode == '跨语种复刻':
             print('get cross_lingual inference request')
-            print(self.model_dir)
+            print(model_dir)
             set_all_random_seed(seed)
             output = cosyvoice.inference_cross_lingual(tts_text, prompt_speech_16k,False,speed)
         return return_audio(output,t0)

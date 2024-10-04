@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 16:30:35
+LastEditTime: 2024-10-04 16:33:46
 Description: file content
 '''
 '''
@@ -25,7 +25,7 @@ from funaudio_utils.cosyvoice_plus import CosyVoicePlus
 
 fAudioTool = FunAudioLLMTool()
 
-CATEGORY_NAME = "FunAudioLLM"
+CATEGORY_NAME = "FunAudioLLM - CosyVoice"
 
 folder_paths.add_model_folder_path("CosyVoice", os.path.join(folder_paths.models_dir, "CosyVoice"))
 

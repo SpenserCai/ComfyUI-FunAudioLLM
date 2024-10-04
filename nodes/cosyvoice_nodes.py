@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 14:44:32
+LastEditTime: 2024-10-04 14:53:23
 Description: file content
 '''
 import os
@@ -11,8 +11,8 @@ import folder_paths
 import random
 import numpy as np
 import torch
-from utils.pre import FunAudioLLMTool
-from utils.download_models import download_cosyvoice_300m
+from funaudio_utils.pre import FunAudioLLMTool
+from funaudio_utils.download_models import download_cosyvoice_300m
 from cosyvoice.cli.cosyvoice import CosyVoice
 
 fAudioTool = FunAudioLLMTool()

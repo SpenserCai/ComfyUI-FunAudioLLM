@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 17:22:13
+LastEditTime: 2024-10-04 17:25:20
 Description: file content
 '''
 import os
@@ -147,6 +147,7 @@ class CosyVoiceSaveSpeakerModelNode:
     
     CATEGORY = CATEGORY_NAME
     RETURN_TYPES = ()
+    OUTPUT_NODE = True
     FUNCTION="generate"
 
     def generate(self, spk_model, speaker_name, model_dir):

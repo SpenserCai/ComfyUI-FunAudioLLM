@@ -35,6 +35,7 @@ class SenseVoiceNode:
         sensevoice_code_path = os.path.join(folder_paths.base_path,"custom_nodes/ComfyUI-FunAudioLLM/sensevoice/model.py")
         speech = audio["waveform"]
         source_sr = audio["sample_rate"]
+        speech = speech.squeeze(0).numpy()
         speech = speech.astype(np.float32) / np.iinfo(np.int16).max
         if len(speech.shape) > 1:
             input_wav = speech.mean(-1)

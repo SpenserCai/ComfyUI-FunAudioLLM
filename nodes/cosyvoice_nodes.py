@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 15:12:26
+LastEditTime: 2024-10-04 15:17:07
 Description: file content
 '''
 '''
@@ -54,7 +54,7 @@ class CosyVoiceZeroShotNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "tts_text":("TEXT",),
+                "tts_text":("STRING",),
                 "prompt_wav": ("AUDIO",),
                 "speed":("FLOAT",{
                     "default": 1.0

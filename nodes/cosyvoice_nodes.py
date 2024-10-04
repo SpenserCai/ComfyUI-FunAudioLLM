@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 16:59:19
+LastEditTime: 2024-10-04 17:01:51
 Description: file content
 '''
 import os
@@ -72,7 +72,7 @@ class CosyVoiceZeroShotNode:
     
     FUNCTION="generate"
 
-    def generate(self, tts_text, speed, inference_mode, seed, use_25hz, prompt_text=None, prompt_wav=None, speaker_model=None):
+    def generate(self, tts_text, speed, seed, use_25hz, prompt_text=None, prompt_wav=None, speaker_model=None):
         t0 = ttime()
         _, model_dir = download_cosyvoice_300m(use_25hz)
         cosyvoice = CosyVoicePlus(model_dir)

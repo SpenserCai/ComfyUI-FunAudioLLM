@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 17:11:50
+LastEditTime: 2024-10-04 17:22:13
 Description: file content
 '''
 import os
@@ -146,7 +146,7 @@ class CosyVoiceSaveSpeakerModelNode:
         }
     
     CATEGORY = CATEGORY_NAME
-    RETURN_TYPES = ("STRING",)
+    RETURN_TYPES = ()
     FUNCTION="generate"
 
     def generate(self, spk_model, speaker_name, model_dir):
@@ -156,6 +156,6 @@ class CosyVoiceSaveSpeakerModelNode:
             os.makedirs(model_dir)
         # 保存模型
         torch.save(spk_model, os.path.join(model_dir, speaker_name + ".pt"))
-        return (os.path.join(model_dir, speaker_name + ".pt"),)
+        return speaker_name + '.pt'
         
         

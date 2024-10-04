@@ -37,7 +37,7 @@ class SenseVoiceNode:
         speech = fAudioTool.postprocess(speech)
         _, model_dir = download_sensevoice_small()
         model_arg = {
-                "input":speech.numpy(),
+                "input":speech[0],
                 "cache":{},
                 "language":"auto",
                 "batch_size_s":60,

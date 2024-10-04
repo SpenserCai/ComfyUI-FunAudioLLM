@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 17:25:20
+LastEditTime: 2024-10-04 20:13:31
 Description: file content
 '''
 import os
@@ -12,20 +12,15 @@ import random
 import numpy as np
 import torch
 from funaudio_utils.pre import FunAudioLLMTool
-from funaudio_utils.download_models import download_cosyvoice_300m, get_speaker_default_path
+from funaudio_utils.download_models import download_cosyvoice_300m, get_speaker_default_path, download_cosyvoice_300m_sft
 from funaudio_utils.cosyvoice_plus import CosyVoicePlus
+from cosyvoice.utils.common import set_all_random_seed
 
 fAudioTool = FunAudioLLMTool()
 
 CATEGORY_NAME = "FunAudioLLM - CosyVoice"
 
 folder_paths.add_model_folder_path("CosyVoice", os.path.join(folder_paths.models_dir, "CosyVoice"))
-
-def set_all_random_seed(seed):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
 
 def return_audio(output,t0,spk_model):
     output_list = []
@@ -95,6 +90,74 @@ class CosyVoiceZeroShotNode:
             output = cosyvoice.inference_zero_shot_with_spkmodel(tts_text, speaker_model,False,speed)
             return return_audio(output,t0,speaker_model)
 
+class CosyVoiceSFTNode:
+    sft_spk_list = ['中文女', '中文男', '日语男', '粤语女', '英文女', '英文男', '韩语女']
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required":{
+                "tts_text":("STRING",),
+                "speaker_name":(s.sft_spk_list,{
+                    "default":"中文女"
+                }),
+                "speed":("FLOAT",{
+                    "default": 1.0
+                }),
+                "seed":("INT",{
+                    "default": 42
+                }),
+                "use_25hz":("BOOLEAN",{
+                    "default": False
+                }),
+            }
+        }
+    
+    CATEGORY = CATEGORY_NAME
+    RETURN_TYPES = ("AUDIO",)
+    FUNCTION="generate"
+
+    def generate(self, tts_text, speaker_name, speed, seed, use_25hz):
+        t0 = ttime()
+        _, model_dir = download_cosyvoice_300m_sft(use_25hz)
+        cosyvoice = CosyVoicePlus(model_dir)
+        set_all_random_seed(seed)
+        output = cosyvoice.inference_sft(tts_text, speaker_name, False, speed)
+        return return_audio(output,t0,None)
+    
+class CosyVoiceCrossLingualNode:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required":{
+                "tts_text":("STRING",),
+                "prompt_wav": ("AUDIO",),
+                "speed":("FLOAT",{
+                    "default": 1.0
+                }),
+                "seed":("INT",{
+                    "default": 42
+                }),
+                "use_25hz":("BOOLEAN",{
+                    "default": False
+                }),
+            }
+        }
+    
+    CATEGORY = CATEGORY_NAME
+    RETURN_TYPES = ("AUDIO",)
+    FUNCTION="generate"
+
+    def generate(self, tts_text, prompt_wav, speed, seed, use_25hz):
+        t0 = ttime()
+        _, model_dir = download_cosyvoice_300m(use_25hz)
+        cosyvoice = CosyVoicePlus(model_dir)
+        speech = fAudioTool.audio_resample(prompt_wav["waveform"], prompt_wav["sample_rate"])
+        prompt_speech_16k = fAudioTool.postprocess(speech)
+        set_all_random_seed(seed)
+        output = cosyvoice.inference_cross_lingual(tts_text, prompt_speech_16k, False, speed)
+        return return_audio(output,t0,None)
+
 class CosyVoiceLoadSpeakerModelNode:
     @classmethod
     def INPUT_TYPES(s):
@@ -112,7 +175,7 @@ class CosyVoiceLoadSpeakerModelNode:
     def generate(self, speaker_name, model_dir):
         # 加载模型
         spk_model_path = os.path.join(model_dir, speaker_name + ".pt")
-        assert os.path.exists(spk_model_path), "模型文件不存在"
+        assert os.path.exists(spk_model_path), "Speaker model is not exist"
         spk_model = torch.load(os.path.join(model_dir, speaker_name + ".pt"),map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         return (spk_model,)
     

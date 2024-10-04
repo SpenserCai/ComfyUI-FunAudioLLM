@@ -1,3 +1,11 @@
+'''
+Author: SpenserCai
+Date: 2024-10-04 12:14:22
+version: 
+LastEditors: SpenserCai
+LastEditTime: 2024-10-04 20:14:52
+Description: file content
+'''
 from .nodes.cosyvoice_nodes import *
 from .nodes.sensevoice_nodes import *
 
@@ -5,6 +13,14 @@ NODE_CONFIG = {
     "CosyVoiceZeroShotNode": {
         "class": CosyVoiceZeroShotNode,
         "name": "CosyVoice 3s极速克隆"
+    },
+    "CosyVoiceSFTNode": {
+        "class": CosyVoiceSFTNode,
+        "name": "CosyVoice 预训练音色"
+    },
+    "CosyVoiceCrossLingualNode": {
+        "class": CosyVoiceCrossLingualNode,
+        "name": "CosyVoice 跨语言克隆"
     },
     "CosyVoiceSaveSpeakerModelNode": {
         "class": CosyVoiceSaveSpeakerModelNode,

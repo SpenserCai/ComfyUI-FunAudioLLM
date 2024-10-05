@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-04 22:28:03
+ * @LastEditTime: 2024-10-05 11:07:29
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -25,6 +25,7 @@ Comfyui custom node for [FunAudioLLM](https://funaudiollm.github.io/) include [C
 ### SenseVoice
   - SenseVoice Version: 2024-10-04
   - Support SenseVoice-Small
+  - Support Punctuation segment (need turn off use_fast_mode)
 
 ## How use
 ```bash

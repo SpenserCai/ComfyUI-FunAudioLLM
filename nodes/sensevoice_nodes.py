@@ -1,16 +1,31 @@
+'''
+Author: SpenserCai
+Date: 2024-10-04 12:13:43
+version: 
+LastEditors: SpenserCai
+LastEditTime: 2024-10-05 10:56:10
+Description: file content
+'''
 import folder_paths
 import os
 import numpy as np
 from funasr import AutoModel
 from funaudio_utils.pre import FunAudioLLMTool
 from funaudio_utils.download_models import download_sensevoice_small
-from funasr.utils.postprocess_utils import rich_transcription_postprocess
+from funasr.utils.postprocess_utils import rich_transcription_postprocess,emoji_dict
 
 fAudioTool = FunAudioLLMTool()
 
 CATEGORY_NAME = "FunAudioLLM - SenseVoice"
 
 folder_paths.add_model_folder_path("SenseVoice", os.path.join(folder_paths.models_dir, "SenseVoice"))
+
+def patch_emoji(emoji_dict):
+    # 循环emoji_dict把每个key转成小写，添加到dict
+    t_emoji_dict_key = emoji_dict.keys()
+    for t_e_k in t_emoji_dict_key:
+        emoji_dict[t_e_k.lower()] = emoji_dict[t_e_k]
+    return emoji_dict
 
 class SenseVoiceNode:
     @classmethod
@@ -67,4 +82,5 @@ class SenseVoiceNode:
         
         model = AutoModel(**model_use_arg)
         output = model.generate(**model_arg)
+        emoji_dict = patch_emoji(emoji_dict)
         return (rich_transcription_postprocess(output[0]["text"]),)

@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:43
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-05 10:59:48
+LastEditTime: 2024-10-05 11:03:31
 Description: file content
 '''
 import folder_paths
@@ -21,10 +21,11 @@ CATEGORY_NAME = "FunAudioLLM - SenseVoice"
 folder_paths.add_model_folder_path("SenseVoice", os.path.join(folder_paths.models_dir, "SenseVoice"))
 
 def patch_emoji(emoji_dict):
-    # 循环emoji_dict把每个key转成小写，添加到dict
     t_emoji_dict_key = emoji_dict.keys()
+    emoji_dict_new = {}
     for t_e_k in t_emoji_dict_key:
-        emoji_dict[t_e_k.lower()] = emoji_dict[t_e_k]
+        emoji_dict_new[t_e_k.lower()] = emoji_dict[t_e_k]
+    emoji_dict.update(emoji_dict_new)
     return emoji_dict
 
 class SenseVoiceNode:

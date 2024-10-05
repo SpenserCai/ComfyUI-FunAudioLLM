@@ -1,0 +1,1191 @@
+{
+  "last_node_id": 56,
+  "last_link_id": 65,
+  "nodes": [
+    {
+      "id": 22,
+      "type": "SaveAudio",
+      "pos": {
+        "0": 1591.7777099609375,
+        "1": -87.86662292480469
+      },
+      "size": {
+        "0": 315,
+        "1": 100
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 28,
+          "label": "音频"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        null
+      ]
+    },
+    {
+      "id": 34,
+      "type": "CosyVoiceSaveSpeakerModelNode",
+      "pos": {
+        "0": 1593.7777099609375,
+        "1": 179.1333770751953
+      },
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spk_model",
+          "type": "SPK_MODEL",
+          "link": 49,
+          "label": "spk_model"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "CosyVoiceSaveSpeakerModelNode"
+      },
+      "widgets_values": [
+        "YANSII",
+        "/home/machines/data/ComfyUI/models/CosyVoice/Speaker"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 451.77789306640625,
+        "1": 71.13337707519531
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "这个算法厉害的地方就在于，只需要最少三秒的原始声音，就可以进行声音克隆了，而且最后的内容可以很长。"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 453.77789306640625,
+        "1": 371.1334228515625
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            50
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "对的，我可以就是走线，它应该有像建模一样，你让那些粒子按你想要的方向走，然后你画一条线，它就随着你的运动轨迹去动的吧。"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "CosyVoiceZeroShotNode",
+      "pos": {
+        "0": 1059.7777099609375,
+        "1": -88.86662292480469
+      },
+      "size": {
+        "0": 315,
+        "1": 198
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt_wav",
+          "type": "AUDIO",
+          "link": 48,
+          "label": "prompt_wav"
+        },
+        {
+          "name": "speaker_model",
+          "type": "SPK_MODEL",
+          "link": null,
+          "label": "speaker_model"
+        },
+        {
+          "name": "tts_text",
+          "type": "STRING",
+          "link": 38,
+          "widget": {
+            "name": "tts_text"
+          },
+          "label": "tts_text"
+        },
+        {
+          "name": "prompt_text",
+          "type": "STRING",
+          "link": 50,
+          "widget": {
+            "name": "prompt_text"
+          },
+          "label": "prompt_text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            28
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "AUDIO"
+        },
+        {
+          "name": "SPK_MODEL",
+          "type": "SPK_MODEL",
+          "links": [
+            49
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "label": "SPK_MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceZeroShotNode"
+      },
+      "widgets_values": [
+        "",
+        1,
+        1713,
+        "randomize",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 33,
+      "type": "LoadAudio",
+      "pos": {
+        "0": 478.77789306640625,
+        "1": -171.8666229248047
+      },
+      "size": {
+        "0": 315,
+        "1": 124
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            48
+          ],
+          "shape": 3,
+          "label": "音频"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "YANSII.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 36,
+      "type": "CosyVoiceSFTNode",
+      "pos": {
+        "0": 1047.64453125,
+        "1": 899.199462890625
+      },
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "tts_text",
+          "type": "STRING",
+          "link": 51,
+          "widget": {
+            "name": "tts_text"
+          },
+          "label": "tts_text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            52
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceSFTNode"
+      },
+      "widgets_values": [
+        "",
+        "中文男",
+        1,
+        1329,
+        "randomize",
+        true
+      ]
+    },
+    {
+      "id": 38,
+      "type": "SaveAudio",
+      "pos": {
+        "0": 1569.6444091796875,
+        "1": 897.199462890625
+      },
+      "size": {
+        "0": 315,
+        "1": 100
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 52,
+          "label": "音频"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        null
+      ]
+    },
+    {
+      "id": 41,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 487.3113098144531,
+        "1": 1736.201416015625
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            54
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "And then later on, fully acquiring that company. So keeping management in line, interest in line with the asset that\\'s coming into the family is a reason why sometimes we don\\'t buy the whole thing."
+      ]
+    },
+    {
+      "id": 40,
+      "type": "LoadAudio",
+      "pos": {
+        "0": 528.3111572265625,
+        "1": 1519.20068359375
+      },
+      "size": {
+        "0": 315,
+        "1": 124
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "label": "音频"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "YANSII.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 42,
+      "type": "SaveAudio",
+      "pos": {
+        "0": 1882.3109130859375,
+        "1": 1626.2008056640625
+      },
+      "size": {
+        "0": 315,
+        "1": 100
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 55,
+          "label": "音频"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        null
+      ]
+    },
+    {
+      "id": 39,
+      "type": "CosyVoiceCrossLingualNode",
+      "pos": {
+        "0": 1268.3109130859375,
+        "1": 1637.2008056640625
+      },
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt_wav",
+          "type": "AUDIO",
+          "link": 53,
+          "label": "prompt_wav"
+        },
+        {
+          "name": "tts_text",
+          "type": "STRING",
+          "link": 54,
+          "widget": {
+            "name": "tts_text"
+          },
+          "label": "tts_text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            55
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceCrossLingualNode"
+      },
+      "widgets_values": [
+        "",
+        1,
+        1344,
+        "randomize",
+        false
+      ]
+    },
+    {
+      "id": 49,
+      "type": "CosyVoiceLoadSpeakerModelNode",
+      "pos": {
+        "0": 2500,
+        "1": -137
+      },
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SPK_MODEL",
+          "type": "SPK_MODEL",
+          "links": [
+            60
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "SPK_MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceLoadSpeakerModelNode"
+      },
+      "widgets_values": [
+        "YANSII",
+        "/home/machines/data/ComfyUI/models/CosyVoice/Speaker"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "CosyVoiceZeroShotNode",
+      "pos": {
+        "0": 3001,
+        "1": -152
+      },
+      "size": {
+        "0": 315,
+        "1": 198
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt_wav",
+          "type": "AUDIO",
+          "link": null,
+          "label": "prompt_wav"
+        },
+        {
+          "name": "speaker_model",
+          "type": "SPK_MODEL",
+          "link": 60,
+          "label": "speaker_model"
+        },
+        {
+          "name": "tts_text",
+          "type": "STRING",
+          "link": 62,
+          "widget": {
+            "name": "tts_text"
+          },
+          "label": "tts_text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            61
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "AUDIO"
+        },
+        {
+          "name": "SPK_MODEL",
+          "type": "SPK_MODEL",
+          "links": null,
+          "shape": 3,
+          "label": "SPK_MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceZeroShotNode"
+      },
+      "widgets_values": [
+        "",
+        1,
+        1688,
+        "randomize",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 37,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 432.64453125,
+        "1": 900.199462890625
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            51
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "你好，我是通义生成式语音大模型，请问有什么可以帮您的吗?"
+      ]
+    },
+    {
+      "id": 52,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 2499,
+        "1": 51
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            62
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "你好，我是通义生成式语音大模型，请问有什么可以帮您的吗?"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "SaveAudio",
+      "pos": {
+        "0": 3502,
+        "1": -149
+      },
+      "size": {
+        "0": 315,
+        "1": 100
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 61,
+          "label": "音频"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        null
+      ]
+    },
+    {
+      "id": 47,
+      "type": "LoadAudio",
+      "pos": {
+        "0": 2379.0263671875,
+        "1": 1490.71044921875
+      },
+      "size": {
+        "0": 315,
+        "1": 124
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            58
+          ],
+          "shape": 3,
+          "label": "音频"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "变态御姐.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 48,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": 2754.84814453125,
+        "1": 1730
+      },
+      "size": {
+        "0": 339.8946533203125,
+        "1": 127.73780059814453
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 59,
+          "widget": {
+            "name": "text"
+          },
+          "label": "文本"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "有限速拍照不要跑太快，小心被拍到。"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "SenseVoiceNode",
+      "pos": {
+        "0": 2755.587890625,
+        "1": 1500.203369140625
+      },
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 58,
+          "label": "audio"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            59
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SenseVoiceNode"
+      },
+      "widgets_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": 54,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 2415,
+        "1": 818
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            63
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "在面对挑战时，他展现了非凡的<strong>勇气</strong>与<strong>智慧</strong>。"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "CosyVoiceInstructNode",
+      "pos": {
+        "0": 3008,
+        "1": 930
+      },
+      "size": [
+        315,
+        178
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "tts_text",
+          "type": "STRING",
+          "link": 63,
+          "widget": {
+            "name": "tts_text"
+          }
+        },
+        {
+          "name": "instruct_text",
+          "type": "STRING",
+          "link": 64,
+          "widget": {
+            "name": "instruct_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            65
+          ],
+          "shape": 3,
+          "label": "AUDIO",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CosyVoiceInstructNode"
+      },
+      "widgets_values": [
+        "",
+        "中文女",
+        "",
+        1,
+        226,
+        "randomize"
+      ]
+    },
+    {
+      "id": 55,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 2415,
+        "1": 1087
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            64
+          ],
+          "shape": 3,
+          "label": "字符串"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "Theo \\'Crimson\\', is a fiery, passionate rebel leader. Fights with fervor for justice, but struggles with impulsiveness."
+      ]
+    },
+    {
+      "id": 56,
+      "type": "SaveAudio",
+      "pos": {
+        "0": 3508,
+        "1": 932
+      },
+      "size": {
+        "0": 315,
+        "1": 100
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 65,
+          "label": "音频"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      28,
+      27,
+      0,
+      22,
+      0,
+      "AUDIO"
+    ],
+    [
+      38,
+      18,
+      0,
+      27,
+      2,
+      "STRING"
+    ],
+    [
+      48,
+      33,
+      0,
+      27,
+      0,
+      "AUDIO"
+    ],
+    [
+      49,
+      27,
+      1,
+      34,
+      0,
+      "SPK_MODEL"
+    ],
+    [
+      50,
+      35,
+      0,
+      27,
+      3,
+      "STRING"
+    ],
+    [
+      51,
+      37,
+      0,
+      36,
+      0,
+      "STRING"
+    ],
+    [
+      52,
+      36,
+      0,
+      38,
+      0,
+      "AUDIO"
+    ],
+    [
+      53,
+      40,
+      0,
+      39,
+      0,
+      "AUDIO"
+    ],
+    [
+      54,
+      41,
+      0,
+      39,
+      1,
+      "STRING"
+    ],
+    [
+      55,
+      39,
+      0,
+      42,
+      0,
+      "AUDIO"
+    ],
+    [
+      58,
+      47,
+      0,
+      46,
+      0,
+      "AUDIO"
+    ],
+    [
+      59,
+      46,
+      0,
+      48,
+      0,
+      "STRING"
+    ],
+    [
+      60,
+      49,
+      0,
+      50,
+      1,
+      "SPK_MODEL"
+    ],
+    [
+      61,
+      50,
+      0,
+      51,
+      0,
+      "AUDIO"
+    ],
+    [
+      62,
+      52,
+      0,
+      50,
+      2,
+      "STRING"
+    ],
+    [
+      63,
+      54,
+      0,
+      53,
+      0,
+      "STRING"
+    ],
+    [
+      64,
+      55,
+      0,
+      53,
+      1,
+      "STRING"
+    ],
+    [
+      65,
+      53,
+      0,
+      56,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "自然语言控制",
+      "bounding": [
+        2349,
+        696,
+        1637,
+        653
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Load Speaker Model",
+      "bounding": [
+        2350,
+        -323,
+        1629,
+        953
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "SenseVoice",
+      "bounding": [
+        2347,
+        1401,
+        855,
+        604
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Cross-lingual",
+      "bounding": [
+        298,
+        1394,
+        1977,
+        599
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "SFT",
+      "bounding": [
+        300,
+        692,
+        1973,
+        654
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Zero-Shot",
+      "bounding": [
+        300,
+        -324,
+        1971,
+        956
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.2099283210943803,
+      "offset": [
+        1907.4711686321293,
+        1289.5696747011782
+      ]
+    },
+    "workspace_info": {
+      "id": "EW2RgI7FenB6XZ0fiaw4S",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    }
+  },
+  "version": 0.4
+}

@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-05 11:11:35
+ * @LastEditTime: 2024-10-05 12:30:42
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -51,3 +51,6 @@ If your network is unstable, you can pre-download the model from the following s
 - [CosyVoice-300M-Instruct](https://modelscope.cn/models/iic/CosyVoice-300M-Instruct) -> `ComfyUI/models/CosyVoice/CosyVoice-300M-Instruct`
 - [SenseVoiceSmall](https://modelscope.cn/models/iic/SenseVoiceSmall) -> `ComfyUI/models/SenseVoice/SenseVoiceSmall`
      
+## WorkFlow
+
+<img src="./assets/Workflow_FunAudioLLM.png" alt="zh-CN" />

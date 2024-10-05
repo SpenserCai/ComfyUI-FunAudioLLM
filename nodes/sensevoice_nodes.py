@@ -38,6 +38,9 @@ class SenseVoiceNode:
         source_sr = audio["sample_rate"]
         speech = fAudioTool.audio_resample(speech, source_sr)
         speech = fAudioTool.postprocess(speech)
+        # 判断语音长度是否大于30s
+        if speech.shape[1] > 30 * 22050 and use_fast_mode:
+            raise ValueError("Audio length is too long, please set use_fast_mode to False.")
         _, model_dir = download_sensevoice_small()
         model_arg = {
                 "input":speech[0],

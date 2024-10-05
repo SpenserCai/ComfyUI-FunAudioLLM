@@ -40,6 +40,15 @@ apt install ffmpeg
 git clone https://github.com/SpenserCai/ComfyUI-FunAudioLLM
 cd ComfyUI-FunAudioLLM
 pip install -r requirements.txt
+
+```
+
+### Windows
+In windows need use conda to install pynini
+```bash
+conda install -c conda-forge pynini=2.1.5
+pip install -r requirements.txt
+
 ```
 
 If your network is unstable, you can pre-download the model from the following sources and place it in the appropriate directory.

@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:28
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-04 21:44:43
+LastEditTime: 2024-10-05 12:23:01
 Description: file content
 '''
 import os
@@ -181,7 +181,7 @@ class CosyVoiceInstructNode:
     RETURN_TYPES = ("AUDIO",)
     FUNCTION="generate"
 
-    def generate(self, tts_text, speaker_name, instruct_text, speed, seed, use_25hz):
+    def generate(self, tts_text, speaker_name, instruct_text, speed, seed):
         t0 = ttime()
         _, model_dir = download_cosyvoice_300m_instruct()
         cosyvoice = CosyVoicePlus(model_dir)

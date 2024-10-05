@@ -30,6 +30,7 @@ audiosegment
 srt
 ffmpeg-python
 WeTextProcessing
+aliyun-python-sdk-core
 funasr>=1.1.3
 huggingface
 huggingface_hub

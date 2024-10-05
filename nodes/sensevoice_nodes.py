@@ -21,6 +21,9 @@ class SenseVoiceNode:
                 "use_fast_mode":("BOOLEAN",{
                     "default": False
                 }),
+                "punc_segment":("BOOLEAN",{
+                    "default": False
+                }),
             }
         }
     
@@ -29,7 +32,7 @@ class SenseVoiceNode:
 
     FUNCTION="generate"
 
-    def generate(self,audio, use_fast_mode):
+    def generate(self,audio, use_fast_mode,punc_segment):
         sensevoice_code_path = os.path.join(folder_paths.base_path,"custom_nodes/ComfyUI-FunAudioLLM/sensevoice/model.py")
         speech = audio["waveform"]
         source_sr = audio["sample_rate"]
@@ -42,23 +45,23 @@ class SenseVoiceNode:
                 "language":"auto",
                 "batch_size_s":60,
         }
+        model_use_arg = {
+            "model":model_dir,
+            "trust_remote_code":True,
+            "remote_code":sensevoice_code_path,
+            "device":"cuda:0",
+        }
+
         if not use_fast_mode:
-            model = AutoModel(model=model_dir,
-                              trust_remote_code=True,
-                              remote_code=sensevoice_code_path,
-                              vad_model="fsmn-vad",
-                              vad_kwargs={"max_single_segment_time": 30000},
-                              device="cuda:0",
-                              punc_model="ct-punc-c",
-                    )
+            model_use_arg["vad_model"] = "fsmn-vad"
+            model_use_arg["vad_kwargs"] = {"max_single_segment_time":30000}
+
             model_arg["merge_vad"] = True
             model_arg["merge_length_s"] = 15
-            
-        else:
-            model = AutoModel(model=model_dir,
-                              trust_remote_code=True,
-                              remote_code=sensevoice_code_path,
-                              device="cuda:0",
-                    )
+
+        if punc_segment:
+            model_use_arg["punc_model"] = "ct-punc-c"
+        
+        model = AutoModel(**model_use_arg)
         output = model.generate(**model_arg)
         return (rich_transcription_postprocess(output[0]["text"]),)

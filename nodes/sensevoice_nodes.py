@@ -18,8 +18,8 @@ class SenseVoiceNode:
         return {
             "required":{
                 "audio":("AUDIO",),
-                "less_than_30s":("BOOLEAN",{
-                    "default": True
+                "use_fast_mode":("BOOLEAN",{
+                    "default": False
                 }),
             }
         }
@@ -29,7 +29,7 @@ class SenseVoiceNode:
 
     FUNCTION="generate"
 
-    def generate(self,audio, less_than_30s):
+    def generate(self,audio, use_fast_mode):
         sensevoice_code_path = os.path.join(folder_paths.base_path,"custom_nodes/ComfyUI-FunAudioLLM/sensevoice/model.py")
         speech = audio["waveform"]
         source_sr = audio["sample_rate"]
@@ -42,13 +42,14 @@ class SenseVoiceNode:
                 "language":"auto",
                 "batch_size_s":60,
         }
-        if not less_than_30s:
+        if not use_fast_mode:
             model = AutoModel(model=model_dir,
                               trust_remote_code=True,
                               remote_code=sensevoice_code_path,
                               vad_model="fsmn-vad",
                               vad_kwargs={"max_single_segment_time": 30000},
                               device="cuda:0",
+                              punc_model="ct-punc-c",
                     )
             model_arg["merge_vad"] = True
             model_arg["merge_length_s"] = 15

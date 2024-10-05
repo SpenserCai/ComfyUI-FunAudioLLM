@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2024-10-04 12:13:43
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2024-10-05 10:56:10
+LastEditTime: 2024-10-05 10:59:48
 Description: file content
 '''
 import folder_paths
@@ -12,7 +12,7 @@ import numpy as np
 from funasr import AutoModel
 from funaudio_utils.pre import FunAudioLLMTool
 from funaudio_utils.download_models import download_sensevoice_small
-from funasr.utils.postprocess_utils import rich_transcription_postprocess,emoji_dict
+from funasr.utils import postprocess_utils
 
 fAudioTool = FunAudioLLMTool()
 
@@ -82,5 +82,5 @@ class SenseVoiceNode:
         
         model = AutoModel(**model_use_arg)
         output = model.generate(**model_arg)
-        emoji_dict = patch_emoji(emoji_dict)
-        return (rich_transcription_postprocess(output[0]["text"]),)
+        postprocess_utils.emoji_dict = patch_emoji(postprocess_utils.emoji_dict)
+        return (postprocess_utils.rich_transcription_postprocess(output[0]["text"]),)

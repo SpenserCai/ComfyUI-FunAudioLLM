@@ -3,7 +3,7 @@
  * @Date: 2024-10-04 11:28:28
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2024-10-05 12:30:42
+ * @LastEditTime: 2024-10-06 11:56:47
  * @Description: file content
 -->
 # ComfyUI-FunAudioLLM
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ### Windows
 In windows need use conda to install pynini
 ```bash
-conda install -c conda-forge pynini=2.1.5
+conda install -c conda-forge pynini=2.1.6
 pip install -r requirements.txt
 
 ```

@@ -43,7 +43,10 @@ class CosyVoiceZeroShotNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "tts_text":("STRING",),
+                "tts_text":("STRING", {
+                    "default": "",
+                    "multiline": True
+                }),
                 "speed":("FLOAT",{
                     "default": 1.0
                 }),
@@ -96,7 +99,10 @@ class CosyVoiceSFTNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "tts_text":("STRING",),
+                "tts_text":("STRING",  {
+                    "default": "",
+                    "multiline": True
+                }),
                 "speaker_name":(s.sft_spk_list,{
                     "default":"中文女"
                 }),
@@ -129,7 +135,10 @@ class CosyVoiceCrossLingualNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "tts_text":("STRING",),
+                "tts_text":("STRING", {
+                    "default": "",
+                    "multiline": True
+                }),
                 "prompt_wav": ("AUDIO",),
                 "speed":("FLOAT",{
                     "default": 1.0
@@ -163,7 +172,10 @@ class CosyVoiceInstructNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "tts_text":("STRING",),
+                "tts_text":("STRING", {
+                    "default": "",
+                    "multiline": True
+                }),
                 "speaker_name":(s.sft_spk_list,{
                     "default":"中文女"
                 }),
@@ -194,7 +206,9 @@ class CosyVoiceLoadSpeakerModelNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "speaker_name":("STRING",),
+                "speaker_name":("STRING", {
+                    "default": ""
+                }),
                 "model_dir":("STRING",{ "default":get_speaker_default_path()}),
             }
         }
@@ -215,7 +229,9 @@ class CosyVoiceLoadSpeakerModelFromUrlNode:
     def INPUT_TYPES(s):
         return {
             "required":{
-                "model_url":("STRING",),
+                "model_url":("STRING", {
+                    "default": ""
+                }),
             }
         }
     
@@ -234,7 +250,9 @@ class CosyVoiceSaveSpeakerModelNode:
         return {
             "required":{
                 "spk_model":("SPK_MODEL",),
-                "speaker_name":("STRING",),
+                "speaker_name":("STRING", {
+                    "default": ""
+                }),
                 "model_dir":("STRING",{ "default":get_speaker_default_path()}),
             }
         }

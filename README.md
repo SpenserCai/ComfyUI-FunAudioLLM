@@ -57,7 +57,7 @@ If meet error when you install
 brew install openfst
 export CPPFLAGS="-I/opt/homebrew/include"
 export LDFLAGS="-L/opt/homebrew/lib"
-pip install pynini
+pip install -r requirements.txt
 ```
 
 If your network is unstable, you can pre-download the model from the following sources and place it in the appropriate directory.

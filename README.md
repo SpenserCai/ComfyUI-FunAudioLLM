@@ -51,6 +51,15 @@ pip install -r requirements.txt
 
 ```
 
+### MacOS
+If meet error when you install
+```bash
+brew install openfst
+export CPPFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/lib"
+pip install pynini
+```
+
 If your network is unstable, you can pre-download the model from the following sources and place it in the appropriate directory.
 
 - [CosyVoice-300M](https://modelscope.cn/models/iic/CosyVoice-300M) -> `ComfyUI/models/CosyVoice/CosyVoice-300M`
